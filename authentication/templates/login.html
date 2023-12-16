@@ -2,12 +2,33 @@
 {% block content %}
 <!-- Your error message logic and HTML here. -->
 
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for message_tuple in messages %}
+                    {% if message_tuple[0] == 'error' %}
+                        <div class="flash-error">{{ message_tuple[1] }}</div>
+                    {% endif %}
+
+                    {% if message_tuple[0] == 'warning' %}
+                        <div class="flash-warning">{{ message_tuple[1] }}</div>
+                    {% endif %}
+
+                    {% if message_tuple[0] == 'success' %}
+                        <div class="flash-success">{{ message_tuple[1] }}</div>
+                    {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
 <form method="post">
     <label for="username">Username</label>
     <input id="username" type="text" name="username">
-    <label for="username">Password</label>
-    <input id="password" type="text" name="password">
+    <label for="password">Password</label>
+    <input id="password" type="password" name="password"> <!-- Change type to "password" -->
     <input type="submit" value="Login">
 </form>
-{% endblock content %}
 
+{% endblock %}

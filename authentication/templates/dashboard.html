@@ -1,5 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- Your solution here. -->
+    
+    {% if 'username' in session %}
+        {% if session['username'] == 'Alice' %}
+            <div class="dashboard_alice">
+                <p> 
+                    Welkom to your dashboard <b>{{session['username']}}</b> 
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </p>
+            </div>
+        {% else %}
+            <div class="dashboard_bob">
+                <p> 
+                    Welkom to your dashboard <b>{{session['username']}}</b> 
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </p>
+            </div>
+        {% endif %}
+    {% else %}
+        <p><b> {{session['username']}}, you're NOT loged in yet! </b> </p>
+    {%endif%}
+
 {% endblock content %}
 

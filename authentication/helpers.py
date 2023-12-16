@@ -1,6 +1,5 @@
 from hashlib import sha3_512
 
-
 def get_users():
     """Note that this way of storing usernames and passwords is nothing like
     how it would be done in a real application, but it suffices for this
@@ -14,3 +13,17 @@ def get_users():
 
 def hash_password(password):
     return sha3_512(password.encode("utf-8")).hexdigest()
+
+
+def valid_login(username='Alice', password='secret'):
+    current_users = get_users()
+    for user, passw in current_users.items():
+        if username == user:
+            hashed_password = hash_password(password)
+            if passw == hashed_password:
+                return [True, user]
+    
+    return [False, username]
+            
+if __name__ == "__main__":
+    pass

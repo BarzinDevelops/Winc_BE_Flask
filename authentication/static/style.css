@@ -16,7 +16,41 @@ h1 {
     font-weight: bold;
 }
 
-.error {
+.dashboard_alice{
+    background-color: peachpuff;
+}
+.dashboard_bob{
+    background-color: lightseagreen;
+}
+
+
+
+.flash-messages{
+    max-width: 100%;
+}
+
+
+
+.flash-error {
+    max-width:fit-content;
+    padding: 2px 5px;
+    margin: 5px 0;
     color: white;
     background-color: red;
+}
+.flash-warning {
+    max-width:fit-content;
+    padding: 2px 5px;
+    margin: 5px 0;
+    color: white;
+    background-color: orange;
+    /* background-size: 50%; */
+}
+.flash-success {
+    max-width:fit-content;
+    padding: 2px 5px;
+    margin: 5px 0;
+    width: 50%;
+    color: white;
+    background-color: green;
 }
